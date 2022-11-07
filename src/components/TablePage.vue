@@ -2,6 +2,12 @@
     <div class="container">
         <div>
             <b-table striped hover :items="items" :fields="fields">
+                <template #cell(currencies)="prop">
+                    {{prop.item.currencies ? prop.item.currencies[0].symbol : ""}}
+                </template>
+                <template #cell(timezones)="prop">
+                    {{prop.item.timezones ? prop.item.timezones[0] : ""}}
+                </template>
                 <template #cell(button)="prop">
                     <b-button @click="goAbout(prop)">
                         Detay
@@ -17,31 +23,28 @@ export default {
     name: "TablePage",
     data(){
         return{
-            fields:["name","subregion","population","latlng",`currencies`,"timezones","button"],
-            items:[],
+            fields:["name","subregion","population",`currencies`,"timezones","button"],
         }
     },
     methods:{
         goAbout(countries){
-            console.log('buttona basıldı' + ``)
-            let id = countries.item.id
-            this.$router.push(`/about/${id}`)
+            console.log(countries)
+            let name = countries.item.name
+            console.log(name)
+            this.$router.push(`/about/${name}`)
+
         },
     },
 
     created() {
-        this.items = this.$store.state.countries
     },
     computed :{
-        changeTable(){
+        items(){
             return this.$store.state.countries
         }
     },
     watch :{
-        changeTable : function (value){
-            this.items = value
-            console.log(value)
-        }
+
     }
 
 }
