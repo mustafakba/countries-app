@@ -9,7 +9,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     routes:[
         {
-            path:'/about/:id',
+            path:'/about/:name',
             component : AboutPage
         },
         {

@@ -8,6 +8,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state:{
         countries:[],
+        country:{}
     },
     actions: {
         getAllCountries({state}){
@@ -16,6 +17,15 @@ const store = new Vuex.Store({
                 .then(data=>{
                     state.countries = data
                 })
+        },
+        getDetail({state},name){
+            fetch(`https://restcountries.com/v2/name/${name}`)
+                .then(res => res.json())
+                .then(data=>{
+                    state.country = data
+                    console.log(data)
+                })
+
         }
 
 
