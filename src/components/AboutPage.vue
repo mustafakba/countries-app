@@ -7,7 +7,7 @@
                 <div class="card-text  d-flex align-items-center justify-content-center  ">
                     <span class="title">Bilinen Çağrışımlar:  </span> <br>
                    <div class="d-flex align-items-start justify-content-center flex-column  ">
-                        <span class="comment ">{{this.$store.state.country[0] ? this.$store.state.country[0].altSpellings[3] : ""}},</span>
+                        <span class="comment ">{{this.$store.state.country[0] ? this.$store.state.country[0].altSpellings[0] : ""}},</span>
                         <span class="comment ">{{this.$store.state.country[0] ? this.$store.state.country[0].altSpellings[2] : ""}},</span>
                         <span class="comment ">{{this.$store.state.country[0] ? this.$store.state.country[0].altSpellings[1]: ""}} </span>
                     </div>
@@ -32,11 +32,15 @@
                     <span class="title ">Nufüs : </span> <br>
                     <span class="comment ">{{ this.$store.state.country[0].area}}</span>
                 </p>
-
+                <p class="card-text d-flex justify-content-center align-items-center text-center">
+                    <span class="title ">Komşular : </span> <br>
+                    <span class="comment ">{{this.$store.state.country[0].borders}}</span>
+                </p>
                 <p class="card-text d-flex justify-content-center align-items-center text-center">
                     <span class="title ">Domain : </span> <br>
                     <span class="comment ">{{this.$store.state.country[0].topLevelDomain[0]}}</span>
                 </p>
+
 
             </div>
         </div>
