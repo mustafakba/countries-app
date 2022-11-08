@@ -8,7 +8,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state:{
         countries:[],
-        country:{}
+        country:{},
+        country_ind:{}
     },
     actions: {
         getAllCountries({state}){
@@ -26,6 +27,16 @@ const store = new Vuex.Store({
                     console.log(data)
                 })
 
+        },
+        checkIndependecy({state}){
+            console.log(state.country.independent)
+            if(state.country.indepent == "false"){
+                state.country_ind = "Bağımsız Değil"
+            }
+            else{
+                state.country_ind = "Bağımsız Ülke"
+            }
+            return state.country_ind
         }
 
 
