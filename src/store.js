@@ -9,7 +9,8 @@ const store = new Vuex.Store({
     state:{
         countries:[],
         country:{},
-        country_ind:{}
+        country_ind:{},
+        searchedCountry:{}
     },
     actions: {
         getAllCountries({state}){
@@ -26,6 +27,15 @@ const store = new Vuex.Store({
                     state.country = data
                     console.log(data)
                 })
+        },
+        searchCountry({state},payload){
+            fetch(`https://restcountries.com/v2/name/${payload}`)
+                .then(res=>res.json())
+                .then(data=>{
+                    state.countries = data
+                    console.log(data)
+                })
+            console.log(payload)
 
         },
         checkIndependecy({state}){
