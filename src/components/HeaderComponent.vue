@@ -2,10 +2,9 @@
     <div class="container">
 
         <div class="row height d-flex justify-content-center align-items-center">
-
             <div class="col-md-8">
                 <div class="search">
-                    <i class="fa fa-search"></i>
+                    <b-icon-search class="search-icon"></b-icon-search>
                     <input v-model="searchedText" type="text" class="form-control" placeholder="Herhangi Bir Ülkeyi Merak Mı Ediyorsunuz ? Arayın...">
                     <button @click="sendSearch" class="btn btn-primary">Search</button>
                 </div>
@@ -26,6 +25,7 @@ export default {
     },
     methods:{
         sendSearch(){
+            this.$store.dispatch("searchCountry",this.searchedText)
 
         }
     },
@@ -63,7 +63,7 @@ export default {
 
 }
 
-.search .fa-search{
+.search .search-icon{
 
     position: absolute;
     top: 20px;
