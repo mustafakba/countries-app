@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <HeaderComponent></HeaderComponent>
         <div>
             <b-table striped hover :items="items" :fields="fields">
                 <template #cell(currencies)="prop">
@@ -19,8 +20,10 @@
 </template>
 
 <script>
+import HeaderComponent from "@/components/HeaderComponent";
 export default {
     name: "TablePage",
+    components: {HeaderComponent},
     data(){
         return{
             fields:["name","subregion","population",`currencies`,"timezones","button"],
