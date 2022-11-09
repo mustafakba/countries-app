@@ -1,5 +1,5 @@
 <template>
-    <div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="container d-flex justify-content-center align-items-center my-5">
         <div class="card" style="width: 22rem;">
             <div class="card-body">
                 <h5 class="card-title d-flex align-items-center justify-content-center">Country : {{this.$store.state.country[0] ? this.$store.state.country[0].name : ""}}</h5>
@@ -7,8 +7,8 @@
                 <div class="card-text  d-flex align-items-center justify-content-center  ">
                     <span class="title">Bilinen Çağrışımlar:  </span> <br>
                    <div class="d-flex align-items-start justify-content-center flex-column  ">
-                        <span class="comment ">{{this.$store.state.country[0] ? this.$store.state.country[0].altSpellings[0] : ""}},</span>
-                        <span class="comment ">{{this.$store.state.country[0] ? this.$store.state.country[0].altSpellings[2] : ""}},</span>
+                        <span class="comment ">{{this.$store.state.country[0] ? this.$store.state.country[0].altSpellings[0] : ""}}</span>
+                        <span class="comment ">{{this.$store.state.country[0] ? this.$store.state.country[0].altSpellings[2] : ""}}</span>
                         <span class="comment ">{{this.$store.state.country[0] ? this.$store.state.country[0].altSpellings[1]: ""}} </span>
                     </div>
                 </div>
@@ -44,13 +44,24 @@
 
             </div>
         </div>
+        <div class="ml-5 d-flex align-items-center justify-content-center">
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <p class="p-2">
+                    <b-icon icon="exclamation-circle-fill" variant="success"></b-icon>
+                    Diğer Ülkerelere Göz Atmak İçin
+                </p>
+                <b-button @click="goHome" variant="outline-secondary">Tıklayınız</b-button>
+            </div>
+        </div>
 
 
-<!--        {{this.$store.state.country[0] ? this.$store.state.country[0].name : "" }}-->
+
+        <!--        {{this.$store.state.country[0] ? this.$store.state.country[0].name : "" }}-->
     </div>
 </template>
 
 <script>
+
 export default {
     name: "AboutPage",
    data(){
@@ -58,7 +69,9 @@ export default {
         }
    },
     methods:{
-
+        goHome(){
+            this.$router.push('/')
+        }
     },
     mounted() {
         this.$store.dispatch("checkIndependecy")
