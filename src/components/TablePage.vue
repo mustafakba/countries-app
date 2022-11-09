@@ -16,6 +16,19 @@
                 </template>
             </b-table>
         </div>
+        <b-skeleton-wrapper :loading="loading">
+            <template #loading>
+                <b-card>
+                    <b-skeleton width="85%"></b-skeleton>
+                    <b-skeleton width="55%"></b-skeleton>
+                    <b-skeleton width="70%"></b-skeleton>
+                </b-card>
+            </template>
+
+            <b-card>
+
+            </b-card>
+        </b-skeleton-wrapper>
     </div>
 </template>
 
@@ -38,11 +51,17 @@ export default {
 
         },
     },
+    beforeCreate() {
+        this.$store.dispatch("getAllCountries")
 
-    created() {
+
+    },
+
+    mounted() {
     },
     computed :{
         items(){
+            console.log(this.$store.state.countries)
             return this.$store.state.countries
         }
     },
