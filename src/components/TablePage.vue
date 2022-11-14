@@ -1,6 +1,16 @@
 <template>
     <div class="container">
-        <HeaderComponent></HeaderComponent>
+        <div class="d-flex justify-content-center align-items-center">
+            <HeaderComponent></HeaderComponent>
+            <export-excel
+                worksheet="Countries App"
+                name="Countries2"
+                :data="items"
+                :fields="jsonProperties"
+            >
+                <b-button variant="info">Tabloyu Excel Olarak İndir</b-button>
+            </export-excel>
+        </div>
         <div>
             <b-table striped hover :items="items" :fields="fields">
                 <template #cell(currencies)="prop">
@@ -16,19 +26,6 @@
                 </template>
             </b-table>
         </div>
-        <b-skeleton-wrapper :loading="loading">
-            <template #loading>
-                <b-card>
-                    <b-skeleton width="85%"></b-skeleton>
-                    <b-skeleton width="55%"></b-skeleton>
-                    <b-skeleton width="70%"></b-skeleton>
-                </b-card>
-            </template>
-
-            <b-card>
-
-            </b-card>
-        </b-skeleton-wrapper>
     </div>
 </template>
 
@@ -39,8 +36,18 @@ export default {
     components: {HeaderComponent},
     data(){
         return{
-            fields:["name","subregion","population",`currencies`,"timezones","button"],
+            fields:["name","capital","subregion","population",`currencies`,"timezones","button"],
+            jsonProperties:{
+                "Ülke İsmi" : "name",
+                "Ülke Başkenti" : "capital",
+                "Ülke Kıtası" : "subregion",
+                "Nufüs" : "population",
+                "Para Birimi" : "currencies",
+                "Zaman Dilimi" : "timezones",
+
+            }
         }
+
     },
     methods:{
         goAbout(countries){
@@ -53,8 +60,6 @@ export default {
     },
     beforeCreate() {
         this.$store.dispatch("getAllCountries")
-
-
     },
 
     mounted() {
