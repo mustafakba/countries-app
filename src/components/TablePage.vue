@@ -4,7 +4,7 @@
             <HeaderComponent></HeaderComponent>
             <export-excel
                 worksheet="Countries App"
-                name="Countries2"
+                name="Countries"
                 :data="items"
                 :fields="jsonProperties"
             >
