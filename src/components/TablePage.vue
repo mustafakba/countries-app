@@ -12,7 +12,10 @@
             </export-excel>
         </div>
         <div>
-            <b-table striped hover :items="items" :fields="fields">
+
+
+            <b-table striped hover :items="items" :fields="fields" :per-page="perPage" :current-page="currentPage">
+
                 <template #cell(currencies)="prop">
                     {{prop.item.currencies ? prop.item.currencies[0].symbol : ""}}
                 </template>
@@ -25,6 +28,15 @@
                     </b-button>
                 </template>
             </b-table>
+            <p class="mt-3">Sayfa Numarası: {{ currentPage }}</p>
+
+            <b-pagination
+                class="mt-3"
+                v-model="currentPage"
+                :total-rows="rows"
+                :per-page="perPage"
+                aria-controls="my-table"
+            ></b-pagination>
         </div>
     </div>
 </template>
@@ -42,10 +54,10 @@ export default {
                 "Ülke Başkenti" : "capital",
                 "Ülke Kıtası" : "subregion",
                 "Nufüs" : "population",
-                "Para Birimi" : "currencies",
                 "Zaman Dilimi" : "timezones",
-
-            }
+            },
+            perPage:25,
+            currentPage:1
         }
 
     },
@@ -68,6 +80,9 @@ export default {
         items(){
             console.log(this.$store.state.countries)
             return this.$store.state.countries
+        },
+        rows(){
+            return this.items.length
         }
     },
     watch :{
