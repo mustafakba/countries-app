@@ -1,7 +1,7 @@
 # countries-app
 ```
 
-RestCountries API'dan Çekilen Bütün Ülkelerin Tablolarda Listelenmesi 
+RestCountries API'dan Çekilen Bütün Ülkelerin Tablolarda Listelenmesi Ve Pagination İşlemleri
 
 ```
 ![countries-app-all](https://user-images.githubusercontent.com/95040879/201732802-ab19062e-6a6a-46e4-a09d-fe351af6ec48.png)
